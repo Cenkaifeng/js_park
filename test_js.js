@@ -7,4 +7,11 @@
         sex: 'man',
         age: 12,
     }
+
+    let dataObj2 = { 
+        name: 'lili',
+        userId: 1322,
+        sex: 'man',
+        age: 32
+    }
 })(console.log)
