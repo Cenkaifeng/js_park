@@ -1,0 +1,5 @@
+const teacher = "xixi";
+console.log(teacher);
+$(function () {
+  alert("xixi");
+});
