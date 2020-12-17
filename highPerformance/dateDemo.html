@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        const now = new Date();
+        const day = now.getDate();
+        const month = now.getMonth() + 1;
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+
+        const nowStr = `${month}月${day}日${hour}点${minute}分`;
+        document.write(nowStr);
+        console.log(now);
+    </script>
+</body>
+</html>
