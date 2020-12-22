@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-<<<<<<< HEAD
-=======
     "files": ["config.ts"],
->>>>>>> 32687e3b2df71375a40714be88fb543f73aa841a
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
     "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
@@ -21,22 +18,14 @@
     // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                     /* Enable project compilation */
     // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
-<<<<<<< HEAD
-    // "removeComments": true,                /* Do not emit comments to output. */
-=======
     "removeComments": true,                /* Do not emit comments to output. */
->>>>>>> 32687e3b2df71375a40714be88fb543f73aa841a
     // "noEmit": true,                        /* Do not emit outputs. */
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
     // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Strict Type-Checking Options */
-<<<<<<< HEAD
     "strict": true,                           /* 严格按照提示模式 Enable all strict type-checking options. */
-=======
-    "strict": true,                           /* Enable all strict type-checking options. */
->>>>>>> 32687e3b2df71375a40714be88fb543f73aa841a
     // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
     // "strictNullChecks": true,              /* Enable strict null checks. */
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
@@ -44,15 +33,9 @@
     // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
     // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
     // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
-<<<<<<< HEAD
     "suppressImplicitAnyIndexErrors":true,
     /* Additional Checks */
     // "noUnusedLocals": true,                /* 未用变量不打包（打包提示）Report errors on unused locals. */
-=======
-
-    /* Additional Checks */
-    // "noUnusedLocals": true,                /* Report errors on unused locals. */
->>>>>>> 32687e3b2df71375a40714be88fb543f73aa841a
     // "noUnusedParameters": true,            /* Report errors on unused parameters. */
     // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
     // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
@@ -82,5 +65,9 @@
     /* Advanced Options */
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
-  }
+  },
+  "exclude": [
+      "demo24",
+      "demo25"
+  ]
 }
