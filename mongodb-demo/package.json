@@ -4,7 +4,7 @@
     "dependencies": {
         "express": "2.5.8",
         "jade": "0.20.3",
-        "mongodb": "^2.2.33",
+        "mongodb": "^3.1.13",
         "mongodb-wrapper": "^1.0.3"
     }
 }
