@@ -1,0 +1,31 @@
+<!Doctype html>
+<head></head>
+<style>
+
+</style>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script>
+
+(function(log){
+    var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+    if(!indexedDB)
+    {
+        log("你的浏览器不支持IndexedDB");
+    }
+
+    var dbName = "testDb"; //数据库名
+    var version = 1.0; //数据库版本
+    var tabObj = "Jervis"; //由于indexedDB 是非关系型nosql 数据库，不存在表结构，存储单元都是对象key-value的形式；
+
+    // log(indexedDB);
+    // console.dir(indexedDB);
+
+    var request = indexedDB.open(dbName, version) //建立打开数据库的请求
+       
+
+})(console.log)
+</script>
