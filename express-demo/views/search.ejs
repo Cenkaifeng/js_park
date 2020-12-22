@@ -1,0 +1,10 @@
+<h1>Express Tweet results for <%= search %></h1>
+<% if (results.lenght) { %>
+    <ul>
+        <% for (var i = 0; i < results.length; i++) { %>
+        <li><%= results[i].text %> - <em><%= results[i].from_user %></li>
+        <% } %>
+    </ul>
+<% } else { %>
+    <p>No results</p>
+<% } %>
