@@ -65,7 +65,7 @@ console.log(typeof descriptor.get);
 let descriptor2 = Object.getOwnPropertyDescriptor(book, "year");
 console.log(descriptor2.value);
 console.log(descriptor2.enumerable);
-console.log(typeof descriptor2.get);// getOwnPropertyDescriptors (同时展示所有属性的api)
+console.log(typeof descriptor2.get); // getOwnPropertyDescriptors (同时展示所有属性的api)
 
 // 合并对象
 
@@ -88,11 +88,11 @@ console.log("___________________")
 
 dest = {};
 
-result = Object.assign(dest, {a: 'foo'}, {b: 'bar'});
+result = Object.assign(dest, { a: 'foo' }, { b: 'bar' });
 console.log(result);
 
 dest = {
-    set a (val) {
+    set a(val) {
         console.log(`Invoked dest setter with param ${val}`)
     }
 };
@@ -104,7 +104,7 @@ src = {
     }
 }
 
-Object.assign(dest,src);
+Object.assign(dest, src);
 // 调用src的获取方法
 // 调用dest的设置方法并传入参数"foo"
 // 因为这里的设置函数不执行赋值操作
@@ -114,14 +114,14 @@ console.log(dest)
 
 console.log("___________________")
 
-console.log(Object.is(true, 1));  // false
-console.log(Object.is({}, {}));   // false
-console.log(Object.is("2", 2));   // false
+console.log(Object.is(true, 1)); // false
+console.log(Object.is({}, {})); // false
+console.log(Object.is("2", 2)); // false
 
 // 正确的0、-0、+0相等/不等判定
-console.log(Object.is(+0, -0));   // false
-console.log(Object.is(+0, 0));    // true
-console.log(Object.is(-0, 0));    // false
+console.log(Object.is(+0, -0)); // false
+console.log(Object.is(+0, 0)); // true
+console.log(Object.is(-0, 0)); // false
 
 // 正确的NaN相等判定
 console.log(Object.is(NaN, NaN)); // true
@@ -133,9 +133,9 @@ const ageKey = 'age';
 const jobKey = 'job';
 
 let person = {
-  [nameKey]: 'Matt',
-  [ageKey]: 27,
-  [jobKey]: 'Software engineer'
+    [nameKey]: 'Matt',
+    [ageKey]: 27,
+    [jobKey]: 'Software engineer'
 };
 
 console.log(person); // { name: 'Matt', age: 27, job: 'Software engineer' }
@@ -148,13 +148,13 @@ console.log(person); // { name: 'Matt', age: 27, job: 'Software engineer' }
 //       console.log(`My name is ${name}`);
 //     }
 //   };
-  
+
 //   person.sayName('Matt'); // My name is Matt
 
 // 等价上面的
 let person = {
     sayName(name) {
-      console.log(`My name is ${name}`);
+        console.log(`My name is ${name}`);
     }
 };
 
@@ -164,9 +164,23 @@ person.sayName('Matt'); // My name is Matt
 const methodKey = 'sayName';
 
 let person = {
-  [methodKey](name) {
-    console.log(`My name is ${name}`);
-  }
+    [methodKey](name) {
+        console.log(`My name is ${name}`);
+    }
 }
 
 person.sayName('Matt'); // My name is Matt
+
+// 构造函数
+// function Person() {
+//     this.name = "Jake";
+//     this.sayName = function () {
+//         console.log(this.name);
+//     };
+// }
+
+// let person1 = new Person();
+// let person2 = new Person
+
+// 不用参数可以不用加()
+
