@@ -137,3 +137,46 @@ let instance = new SubType;
 
 console.log(instance.getSuperValue());//false
 
+
+console.log('____________原型式继承')
+// 原型式继承
+
+function object(o) {
+    function F() {}
+    F.prototype = o
+    return new F();
+}
+
+let person = {
+    name: "Nicholas",
+    friends: ["Shelby", "Court", "Van"]
+};
+
+let anotherPerson = object(person)// Object.create(person)
+
+anotherPerson.name = "Greg";
+anotherPerson.friends.push("Rob");
+
+let yetAnotherPerson = object(person);
+yetAnotherPerson.name = "Linda";
+yetAnotherPerson.friends.push("Barbie")
+
+console.log(person.friends)
+
+// 寄生继承
+
+function createAnother(original) {
+    let clone = object(original);
+    clone.sayHi = function() {
+        console.log("hi")
+    }
+    return clone;
+}
+
+let person2 = {
+    name: "ni",
+    friends: ["xixi"]
+}
+
+let anotherPerson2 = createAnother(person2);
+anotherPerson2.sayHi()//通过寄生式继承给对象添加函数会导致函数难以重用，与构造函数模式类似。
