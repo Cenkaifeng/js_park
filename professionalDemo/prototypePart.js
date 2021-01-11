@@ -29,9 +29,9 @@ console.log(Person.prototype.constructor === Person); // true
  * 正常的原型链都会终止于Object的原型对象
  * Object原型的原型是null
  */
-console.log(Person.prototype.__proto__ === Object.prototype);   // true
+console.log(Person.prototype.__proto__ === Object.prototype); // true
 console.log(Person.prototype.__proto__.constructor === Object); // true
-console.log(Person.prototype.__proto__.__proto__ === null);     // true
+console.log(Person.prototype.__proto__.__proto__ === null); // true
 
 console.log(Person.prototype.__proto__);
 // {
@@ -41,8 +41,8 @@ console.log(Person.prototype.__proto__);
 //   isPrototypeOf: ...
 //   ...
 // }
-　
-　
+
+
 // let person1 = new Person(),
 //     person2 = new Person();
 
@@ -55,13 +55,13 @@ console.log(Person.prototype.__proto__);
 // console.log(Person.prototype !== Person);  // true
 
 /**
-  * 实例通过__proto__链接到原型对象，
-  * 它实际上指向隐藏特性[[Prototype]]
-  *
-  * 构造函数通过prototype属性链接到原型对象
-  *
-  * 实例与构造函数没有直接联系，与原型对象有直接联系
-  */
+ * 实例通过__proto__链接到原型对象，
+ * 它实际上指向隐藏特性[[Prototype]]
+ *
+ * 构造函数通过prototype属性链接到原型对象
+ *
+ * 实例与构造函数没有直接联系，与原型对象有直接联系
+ */
 // console.log(person1.__proto__ === Person.prototype);   // true
 // conosle.log(person1.__proto__.constructor === Person); // true
 
@@ -110,7 +110,7 @@ function SuperType() {
     this.property = true;
 }
 
-SuperType.prototype.getSuperValue = function() {
+SuperType.prototype.getSuperValue = function () {
     return this.property;
 }
 
@@ -119,24 +119,58 @@ function SubType() {
 }
 
 // 继承SuperType
-SubType.prototype= new SuperType;
+SubType.prototype = new SuperType;
 
 // 新方法
 
-SubType.prototype.getSubValue = function() {
+SubType.prototype.getSubValue = function () {
     return this.subproperty;
 }
 
 // 覆盖已有方法
 
-SubType.prototype.getSuperValue = function() {
+SubType.prototype.getSuperValue = function () {
     return false;
 };
 
 let instance = new SubType;
 
-console.log(instance.getSuperValue());//false
+console.log(instance.getSuperValue()); //false
 
+console.log('____________组合原型继承')
+
+function SuperTypeG(name) {
+    this.name = name;
+    this.colors = ["red", "blue", "green"];
+}
+
+SuperTypeG.prototype.sayName = function () {
+    console.log(this.name);
+};
+
+function SubTypeG(name, age) {
+    // 继承属性
+    SuperTypeG.call(this, name);
+    this.age = age;
+}
+
+SubTypeG.prototype = new SuperTypeG();
+
+SubTypeG.prototype.sayAge = function () {
+    console.log(this.age);
+}
+
+let instanceG = new SubTypeG("NICO", 23);
+instanceG.colors.push("black");
+console.log(instanceG.colors);
+instanceG.sayName();
+instanceG.sayAge();
+
+let instanceG2 = new SubTypeG("Eys", 233);
+instanceG2.colors.push("pink");
+console.log(instanceG2.colors);
+instanceG2.sayName();
+instanceG2.sayAge();
 
 console.log('____________原型式继承')
 // 原型式继承
@@ -152,7 +186,7 @@ let person = {
     friends: ["Shelby", "Court", "Van"]
 };
 
-let anotherPerson = object(person)// Object.create(person)
+let anotherPerson = object(person) // Object.create(person)
 
 anotherPerson.name = "Greg";
 anotherPerson.friends.push("Rob");
@@ -164,10 +198,11 @@ yetAnotherPerson.friends.push("Barbie")
 console.log(person.friends)
 
 // 寄生继承
+console.log('_____________寄生继承')
 
 function createAnother(original) {
     let clone = object(original);
-    clone.sayHi = function() {
+    clone.sayHi = function () {
         console.log("hi")
     }
     return clone;
@@ -179,4 +214,35 @@ let person2 = {
 }
 
 let anotherPerson2 = createAnother(person2);
-anotherPerson2.sayHi()//通过寄生式继承给对象添加函数会导致函数难以重用，与构造函数模式类似。
+anotherPerson2.sayHi() //通过寄生式继承给对象添加函数会导致函数难以重用，与构造函数模式类似。
+
+
+// 优化继承方法
+
+function inheritPrototype(subType, superType) {
+    let prototype = object(superType.prototype); // 创建对象
+    prototype.constructor = subType; // 增强对象
+    subType.prototype = prototype; // 赋值对象
+}
+
+// 寄生组合继承 被称为Es5 以前伪类写法最优解
+function SuperType(name) {
+    this.name = name;
+    this.colors = ["red", "blue", "green"];
+}
+
+SuperType.prototype.sayName = function () {
+    console.log(this.name);
+};
+
+function SubType(name, age) {
+    SuperType.call(this, name); // 第二次调用SuperType()
+
+    this.age = age;
+}
+
+SubType.prototype = new SuperType(); // 第一次调用SuperType()
+SubType.prototype.constructor = SubType;
+SubType.prototype.sayAge = function () {
+    console.log(this.age);
+};
