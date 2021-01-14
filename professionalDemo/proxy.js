@@ -71,20 +71,102 @@ console.log(Object.create(proxyTrap)['foo']);   // handler override
 
 // 捕获器不变式 trap invariant
 
-const target = {};
-Object.defineProperty(target, 'foo', {
-  configurable: false,
-  writable: false,
-  value: 'bar'
-});
+// const target = {};
+// Object.defineProperty(target, 'foo', {
+//   configurable: false,
+//   writable: false,
+//   value: 'bar'
+// });
 
-const handler = {
-  get() {
-    return 'qux';
-  }
-};
+// const handler = {
+//   get() {
+//     return 'qux';
+//   }
+// };
 
-const proxy = new Proxy(target, handler);
+// const proxy = new Proxy(target, handler);
 
-console.log(proxy.foo);
+// console.log(proxy.foo);
 // TypeError
+
+
+// 代理嵌套
+
+// const target = {
+//     foo: 'bar'
+//   };
+  
+//   const firstProxy = new Proxy(target, {
+//     get() {
+//       console.log('first proxy');
+//       return Reflect.get(...arguments);
+//     }
+//   });
+  
+//   const secondProxy = new Proxy(firstProxy, {
+//     get() {
+//       console.log('second proxy');
+//       return Reflect.get(...arguments);
+//     }
+//   });
+  
+//   console.log(secondProxy.foo);
+//   // second proxy
+//   // first proxy
+//   // bar
+
+//   // 同时会出现this指向问题
+
+
+// const target = new Date();
+// const proxy = new Proxy(target, {});
+
+// console.log(proxy instanceof Date);  // true
+
+// proxy.getDate();  // TypeError: 'this' is not a Date object
+
+
+
+// 代理模式
+// const user = {
+//     name: 'Jake'
+//   };
+  
+//   const proxy = new Proxy(user, {
+//     get(target, property, receiver) {
+//       console.log(`Getting ${property}`);
+  
+//       return Reflect.get(...arguments);
+//     },
+//     set(target, property, value, receiver) {
+//       console.log(`Setting ${property}=${value}`);
+  
+//       return Reflect.set(...arguments);
+//     }
+//   });
+  
+//   proxy.name;     // Getting name
+//   proxy.age = 27; // Setting age=27
+
+  //应用
+
+  var a = new Proxy([], Reflect.ownKeys(Reflect).reduce((handlers, key) => {
+      handlers[key] = (...args) => {
+          console.log(key, ...args)
+          return Reflect[key](...args)
+      }
+      return handlers
+  }, {}))
+
+  a.push(1)
+
+  /**
+   * get [] push []
+get [] length []
+set [] 0 1 []
+getOwnPropertyDescriptor [] 0
+defineProperty [] 0 { value: 1, writable: true, enumerable: true, configurable: true }  
+set [ 1 ] length 1 [ 1 ]
+getOwnPropertyDescriptor [ 1 ] length
+defineProperty [ 1 ] length { value: 1 }
+   */
