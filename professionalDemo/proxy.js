@@ -148,7 +148,7 @@ console.log(Object.create(proxyTrap)['foo']);   // handler override
 //   proxy.name;     // Getting name
 //   proxy.age = 27; // Setting age=27
 
-  //应用
+  //应用 给数组做一个代理
 
   var a = new Proxy([], Reflect.ownKeys(Reflect).reduce((handlers, key) => {
       handlers[key] = (...args) => {
