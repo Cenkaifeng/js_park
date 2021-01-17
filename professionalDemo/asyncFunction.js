@@ -56,15 +56,49 @@ function double(value, success, failure) {
     }, 1000);
 }
 
-const successCallback = (x) => console.log(`Success: ${x}`);
-const failureCallback = (e) => console.log(`Failure: ${e}`);
+// const successCallback = (x) => console.log(`Success: ${x}`);
+// const failureCallback = (e) => console.log(`Failure: ${e}`);
 
-double(3, successCallback, failureCallback);
-double('b', successCallback, failureCallback);
+// double(3, successCallback, failureCallback);
+// double('b', successCallback, failureCallback);
 
 // Success: 6（大约1000毫秒之后）
 // Failure: Must provide number as first argument（大约1000毫秒之后）
 
 // Promise 状态
-let p = new Promise(() => {});
-setTimeout(console.log, 0, p);  // Promise <pending>
+// let p = new Promise(() => {});
+// setTimeout(console.log, 0, p);  // Promise <pending>
+
+
+// let p = new Promise((resolve, reject) => {
+//   resolve();
+//   reject(); // 没有效果
+// });
+
+// setTimeout(console.log, 0, p); // Promise <resolved>
+
+
+// try {
+//   throw new Error('foo');
+// } catch(e) {
+//   console.log(e); // Error: foo
+// }
+
+// try {
+//   Promise.reject(new Error('bar'));
+// } catch(e) {
+//   console.log(e);
+// }
+// Uncaught (in promise) Error: bar\
+
+// 链式操作
+
+let p = new Promise( (res, rej) => {
+    console.log('first');
+    res();
+})
+
+p.then( () => console.log('second'))
+ .then( () => console.log('third'))
+ .then( () => console.log('fourth'));
+
