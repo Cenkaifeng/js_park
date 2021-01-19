@@ -93,12 +93,87 @@ function double(value, success, failure) {
 
 // 链式操作
 
-let p = new Promise( (res, rej) => {
+let p = new Promise((res, rej) => {
     console.log('first');
     res();
 })
 
-p.then( () => console.log('second'))
- .then( () => console.log('third'))
- .then( () => console.log('fourth'));
+p.then(() => console.log('second'))
+    .then(() => console.log('third'))
+    .then(() => console.log('fourth'));
 
+// 返回一个原始值
+async function foo() {
+    return 'foo';
+}
+foo().then(console.log);
+// foo
+
+// 返回一个没有实现thenable接口的对象
+async function bar() {
+    return ['bar'];
+}
+bar().then(console.log);
+// ['bar']
+
+// 返回一个实现了thenable接口的非期约对象
+async function baz() {
+    const thenable = {
+        then(callback) { callback('baz'); }
+    };
+    return thenable;
+}
+baz().then(console.log);
+// baz
+
+// 返回一个期约
+async function qux() {
+    return Promise.resolve('qux');
+}
+qux().then(console.log);
+// qux
+
+async function foo() {
+    console.log(1);
+    await Promise.reject(3);
+    console.log(4); // 这行代码不会执行
+}
+
+// 给返回的期约添加一个拒绝处理程序
+foo().catch(console.log);
+console.log(2);
+
+// 1
+// 2
+// 3
+
+
+// 不允许：await出现在了箭头函数中
+function foo() {
+    const syncFn = () => {
+        return await Promise.resolve('foo');
+    };
+    console.log(syncFn());
+}
+
+// 不允许：await出现在了同步函数声明中
+function bar() {
+    function syncFn() {
+        return await Promise.resolve('bar');
+    }
+    console.log(syncFn());
+}
+
+// 不允许：await出现在了同步函数表达式中
+function baz() {
+    const syncFn = function () {
+        return await Promise.resolve('baz');
+    };
+    console.log(syncFn());
+}
+
+// 不允许：IIFE使用同步函数表达式或箭头函数
+function qux() {
+    (function () { console.log(await Promise.resolve('qux')); })();
+    (() => console.log(await Promise.resolve('qux')))();
+}
