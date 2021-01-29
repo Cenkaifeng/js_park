@@ -21,3 +21,15 @@ function romanToInt(s: string): any {
 };
 
 romanToInt("III")
+
+
+// interface AxiosInstance {
+//     <T = any>(value: T): Promise<T>
+// }
+
+// let instance: AxiosInstance;
+// instance = function <T>(value: T): Promise<T>{
+//     return new Promise<T> ( (resolve: any) => {
+//         resolve(value)
+//     })
+// }
