@@ -5,9 +5,12 @@ function bs() {
         for( let j = 0; j < arr.length - 1; j++) {
             if ( i !== j) {
                 if (arr[i] < arr[j]) {
-                    let tp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = tp;
+                    // let tp = arr[i];
+                    // arr[i] = arr[j];
+                    // arr[j] = tp;
+                    arr[i] = arr[i] ^ arr[j];
+                    arr[j] = arr[j] ^ arr[i];
+                    arr[i] = arr[i] ^ arr[j];
                 }
             }
         }
