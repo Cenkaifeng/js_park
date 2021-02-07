@@ -61,5 +61,17 @@ function isPrime(value) {
     return isPrime.answers[value] = prime;
 }
 
-console.assert(!isPrime(5), "is prime!")
-console.assert(!isPrime.answers[5], "is prime!")
+console.assert(!isPrime(5), "is prime!");
+console.assert(!isPrime.answers[5], "is prime!");
+
+// 箭头函数
+
+var values = [0, 3, 2, 5];
+values.sort(function( val1, val2) {
+    return val1 - val2;
+});
+
+values.sort((val1, val2) => val1 - val2);
+
+var greet = name => "Greetings" + name;// 箭头函数函数表达式
+
