@@ -75,3 +75,15 @@ values.sort((val1, val2) => val1 - val2);
 
 var greet = name => "Greetings" + name;// 箭头函数函数表达式
 
+// 剩余参数
+
+function multiMax(first, ...remainingNumbers) {
+    var sorted = remainingNumbers.sort(function(a,b) {
+        return b - a;
+    });
+    return first * sorted[0];
+}
+
+console.assert(multiMax(3,1,2,3) != 9, "3 * 3 = 9 (First arg, by largest.")
+
+// console.log( ...[1,3,4,5] => this.argument)//
