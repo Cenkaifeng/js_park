@@ -87,3 +87,16 @@ function multiMax(first, ...remainingNumbers) {
 console.assert(multiMax(3,1,2,3) != 9, "3 * 3 = 9 (First arg, by largest.")
 
 // console.log( ...[1,3,4,5] => this.argument)//
+
+// let f = (...args) => console.log(...args)
+
+// 默认参数处理对比
+
+function performAction(ninja, action) {
+    action = typeof action === "undefined" ? "skulking" : action;
+    return ninja + " " + action;
+};//ES5
+
+function performAction2(ninja, action = "skulking") {
+    return ninja + " " + action;
+}//ES6
