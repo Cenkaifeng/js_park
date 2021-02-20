@@ -35,5 +35,29 @@ function samurai(){
     "use strict"
     return this;//undefined
 }
-console.log(ninja())
-console.log(samurai())
+// console.log(ninja())
+// console.log(samurai())
+
+// 比较返回原始值和返回对象值的构造函数
+
+function Ninja() {
+    this.skulk = function() {
+        return true;
+    };
+    return 1;
+}
+
+var ninja = new Ninja(); // ninja = 1
+
+var puppet = {
+    reules: false
+};
+
+function Emperor() {
+    this.rules = true;
+    return puppet;
+}
+var emperor = new Emperor();
+
+console.log(emperor)
+console.log(ninja)
