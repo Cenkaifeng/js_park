@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">First Box</div>
+    <div id="box2">Second Box</div>
+    <!-- <script src="./session5.js"></script> -->
+    <script>
+        // var outerValue = "ninja";
+        // function outerFunction() {
+        //     console.log(outerValue !== "ninja", "i can see the ninja");//全局作用域中声明函数
+        // }
+        // outerFunction()
+
+        function animateIt(elementId) {
+            var elem = document.getElementById(elementId);
+            var tick = 0;
+            var timer = setInterval(function() {
+                if ( tick < 100) {
+                    elem.style.left = elem.style.top = tick + "px";
+                    tick ++;
+                } else {
+                    clearInterval(timer);
+
+                }
+            },10)
+        }
+        // animateIt("box1")
+        // animateIt("box2")
+
+        function Samurai(name) {
+            const weapon = "katana";
+            
+            this.getWeapon = function () {
+                // 获取本地变量weapon
+                return weapon;
+            };
+
+            this.getName = function() {
+                // 获取函数参数name
+                return name;
+            }
+
+            this.message = `${name} wielding a ${weapon}`;
+
+            this.getMessage = function () {
+                return this.message;
+            }
+        }
+
+        const samurai = new Samurai("Hattori");
+
+        samurai.getWeapon();
+        samurai.getName();
+        samurai.getMessage();
+    </script>
+</body>
+</html>
