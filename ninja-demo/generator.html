@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function* NinjaGenerator(action) {
+            yield "Hattori " + action;
+            return "Yoshi " + action;
+        }
+
+        const ninjaIterator = NinjaGenerator("skulk");
+
+        const result1 = ninjaIterator.next();
+        const result2 = ninjaIterator.next();
+
+    </script>
+</body>
+</html>

@@ -85,3 +85,28 @@ const throwErrorIterator = ThrowError();
 
 // throwErrorIterator.throw('Catch this!')
 
+
+
+// Promise
+
+const ninjaPromise = new Promise( (resolve, reject) => {
+    // resolve("Hattori");
+    reject("An error resolving a promise")
+});
+
+ninjaPromise.catch( e => {
+    console.log('看看有没有')
+}).then( ninja => {
+    console.log('xx',ninja)
+}, err => {
+    console.log(err)
+})
+
+
+
+// function MyPromise(callback) {
+    
+//     then:() => {
+//         return this
+//     }
+// }

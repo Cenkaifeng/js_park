@@ -61,3 +61,13 @@ var emperor = new Emperor();
 
 console.log(emperor)
 console.log(ninja)
+
+let obj = {
+    a: 20,
+    b: this.a + 10,
+    say:function() {
+        return (this.a + 10)
+    }
+}
+console.log(obj.b)// NaN
+console.log(obj.say(), obj.say)// 30 , [Function: say]
