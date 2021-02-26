@@ -213,3 +213,54 @@ function getJSON(url) {
 // .then( ninjas => getJSON(ninjas))
 // .then( xxx => getJSON(xxx))
 // .catch( error => console.log(error));
+
+
+// 与生成器结合
+
+async(function* () {
+    try {
+        const ninjas = yield getJSON("data/ninjas.json");
+        const missions = yield getJSON("sss/dsss");
+        const missionDescription = yield getJSON("mmm/ssss");
+    }catch (e) {
+        console.log(e);
+    }
+});
+
+// 定义辅助函数操作生成器
+
+function async(generator) {
+    var iterator = generator();
+
+    function handle(iteratorResult) {
+        if(iteratorResult.done) return;
+
+        const iteratorValue = iteratorResult.value;
+
+        if(iteratorValue instanceof Promise) {
+            iteratorValue.then(res => {
+                handle(iterator.next(res)).catch(err => iterator.throw(err))
+            })
+        }
+
+    }
+
+    try {
+        handle(iterator.next());
+    } catch (e) {
+        iterator.throw(e);
+    }
+
+
+}
+
+// 引入async 语法之后
+
+(async function () {
+    try {
+        const ninjas = await getJSON("xxx/sss.json");
+        const missions = await getJSON("xxx/sss.json");
+    } catch(e) {
+
+    }
+})()
