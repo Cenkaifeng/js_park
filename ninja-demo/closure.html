@@ -21,46 +21,114 @@
         // }
         // outerFunction()
 
-        function animateIt(elementId) {
-            var elem = document.getElementById(elementId);
-            var tick = 0;
-            var timer = setInterval(function() {
-                if ( tick < 100) {
-                    elem.style.left = elem.style.top = tick + "px";
-                    tick ++;
-                } else {
-                    clearInterval(timer);
+        // function animateIt(elementId) {
+        //     var elem = document.getElementById(elementId);
+        //     var tick = 0;
+        //     var timer = setInterval(function() {
+        //         if ( tick < 100) {
+        //             elem.style.left = elem.style.top = tick + "px";
+        //             tick ++;
+        //         } else {
+        //             clearInterval(timer);
 
-                }
-            },10)
-        }
-        // animateIt("box1")
-        // animateIt("box2")
+        //         }
+        //     },10)
+        // }
+        // // animateIt("box1")
+        // // animateIt("box2")
 
-        function Samurai(name) {
-            const weapon = "katana";
+        // function Samurai(name) {
+        //     const weapon = "katana";
             
-            this.getWeapon = function () {
-                // 获取本地变量weapon
-                return weapon;
-            };
+        //     this.getWeapon = function () {
+        //         // 获取本地变量weapon
+        //         return weapon;
+        //     };
 
-            this.getName = function() {
-                // 获取函数参数name
-                return name;
-            }
-            this.message = `${name} wielding a ${weapon}`;
+        //     this.getName = function() {
+        //         // 获取函数参数name
+        //         return name;
+        //     }
+        //     this.message = `${name} wielding a ${weapon}`;
 
-            this.getMessage = function () {
-                return this.message;
-            }
-        }
+        //     this.getMessage = function () {
+        //         return this.message;
+        //     }
+        // }
 
-        const samurai = new Samurai("Hattori");
+        // const samurai = new Samurai("Hattori");
 
-        samurai.getWeapon();
-        samurai.getName();
-        samurai.getMessage();
+        // samurai.getWeapon();
+        // samurai.getName();
+        // samurai.getMessage();
+
+// let testBlades =  {
+//     pages: [ 
+//         'pages/index/index', 
+//         'test/selecter/index' 
+// ],
+// slec: [ 
+//         'pages/index/index', 
+//         'test/selecter/index' 
+// ],
+//     window: {
+//       backgroundTextStyle: 'light',
+//       navigationBarBackgroundColor: '#fff',
+//       navigationBarTitleText: 'WeChat',
+//       navigationBarTextStyle: 'black'
+//     },
+//     Global: {
+//       backgroundTextStyle: 'light',
+//       navigationBarBackgroundColor: '#fff',
+//       navigationBarTitleText: 'WeChat',
+//       navigationBarTextStyle: 'black'
+//     }
+//   }
+
+  
+
+// function DeepSlice(target) {
+
+//     let result = "";
+// let result = ""
+
+// function sliceTarget (target) {
+//   let midres = ""; //中间返回值归零
+//     console.log('入口', target)
+//   if (typeof target === "object") { // TODO: 拼接返回值 "key: 'value'" 最后要用 "," 字符拼接
+  
+//   if (Array.isArray(target)) {
+//      //  console.log('isArray', target)
+//      midres += "[";
+//    target.forEach( (e, i, arr) => {
+//     midres += `${sliceTarget(arr[i])}`// FIXME:会多返回一次数组值
+//    })
+//    midres += "],";
+//    return midres;         
+//   } else {
+//      midres += "{";
+//       for(let key in target) {
+//         midres += `${key}:${sliceTarget(target[key])}`
+//       }
+//       midres += "},";
+// //    return result;         
+//   }
+//  // 如果不是对象的话，就是基本数据类型，那么直接赋值
+//  } else {
+// //    console.log('结果',target)
+//    midres = `'${target}',`;
+//    return midres;
+//  }
+//  // 返回最终结果
+// //  console.log('>>>>',result);
+//  return midres;
+// }
+
+//   return result;
+  
+// }
+
+console.log(sliceTarget(testBlades))
     </script>
 </body>
 </html>
