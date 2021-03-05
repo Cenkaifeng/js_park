@@ -144,3 +144,57 @@ var Pl = function() {
     }]),
     o
 }()
+
+(function(e, t, n) {
+    var r, o, a, i = n(16), s = n(86), c = n(59), u = n(53), l = n(3), f = l.process, d = l.setImmediate, p = l.clearImmediate, h = l.MessageChannel, g = l.Dispatch, v = 0, _ = {}, y = "onreadystatechange", m = function() {
+        var e = +this;
+        if (_.hasOwnProperty(e)) {
+            var t = _[e];
+            delete _[e],
+            t()
+        }
+    }, b = function(e) {
+        m.call(e.data)
+    };
+    d && p || (d = function(e) {
+        for (var t = [], n = 1; arguments.length > n; )
+            t.push(arguments[n++]);
+        return _[++v] = function() {
+            s("function" == typeof e ? e : Function(e), t)
+        }
+        ,
+        r(v),
+        v
+    }
+    ,
+    p = function(e) {
+        delete _[e]
+    }
+    ,
+    "process" == n(20)(f) ? r = function(e) {
+        f.nextTick(i(m, e, 1))
+    }
+    : g && g.now ? r = function(e) {
+        g.now(i(m, e, 1))
+    }
+    : h ? (a = (o = new h).port2,
+    o.port1.onmessage = b,
+    r = i(a.postMessage, a, 1)) : l.addEventListener && "function" == typeof postMessage && !l.importScripts ? (r = function(e) {
+        l.postMessage(e + "", "*")
+    }
+    ,
+    l.addEventListener("message", b, !1)) : r = y in u("script") ? function(e) {
+        c.appendChild(u("script"))[y] = function() {
+            c.removeChild(this),
+            m.call(e)
+        }
+    }
+    : function(e) {
+        setTimeout(i(m, e, 1), 0)
+    }
+    ),
+    e.exports = {
+        set: d,
+        clear: p
+    }
+})()
