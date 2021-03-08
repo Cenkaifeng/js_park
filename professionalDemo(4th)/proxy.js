@@ -116,6 +116,15 @@ console.log(Object.create(proxyTrap)['foo']);   // handler override
 //   // bar
 
 //   // 同时会出现this指向问题
+const target = {
+    thisValEqualsProxy() {
+        return this === proxy;
+    }
+}
+
+const proxy = new Proxy(target, {})
+console.log(target.thisValEqualsProxy())// false
+console.log(proxy.thisValEqualsProxy())// true
 
 
 // const target = new Date();
