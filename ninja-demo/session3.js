@@ -27,7 +27,7 @@ var store = {
     nextId: 1,
     cache: {},
     add: function (fn) {
-        if(!fn.id) {
+        if (!fn.id) {
             fn.id = this.nextId++;
             this.cache[fn.id] = fn;
             return true;
@@ -43,17 +43,17 @@ console.assert(store.add(ninja), "But it was only added once.");
 
 function isPrime(value) {
     console.log(this)
-    if (!isPrime.answers) {// 创建缓存
+    if (!isPrime.answers) { // 创建缓存
         isPrime.answers = {};
     }
 
-    if(isPrime.answers[value] !== undefined) {
+    if (isPrime.answers[value] !== undefined) {
         return isPrime.answers[value]; //监测缓存值
     }
 
     var prime = value !== 0 && value !== 1; // 1 is not a prime
     for (var i = 2; i < value; i++) {
-        if(value % i === 0) {
+        if (value % i === 0) {
             prime = false;
             break;
         }
@@ -67,24 +67,24 @@ console.assert(!isPrime.answers[5], "is prime!");
 // 箭头函数
 
 var values = [0, 3, 2, 5];
-values.sort(function( val1, val2) {
+values.sort(function (val1, val2) {
     return val1 - val2;
 });
 
 values.sort((val1, val2) => val1 - val2);
 
-var greet = name => "Greetings" + name;// 箭头函数函数表达式
+var greet = name => "Greetings" + name; // 箭头函数函数表达式
 
 // 剩余参数
 
 function multiMax(first, ...remainingNumbers) {
-    var sorted = remainingNumbers.sort(function(a,b) {
+    var sorted = remainingNumbers.sort(function (a, b) {
         return b - a;
     });
     return first * sorted[0];
 }
 
-console.assert(multiMax(3,1,2,3) != 9, "3 * 3 = 9 (First arg, by largest.")
+console.assert(multiMax(3, 1, 2, 3) != 9, "3 * 3 = 9 (First arg, by largest.")
 
 // console.log( ...[1,3,4,5] => this.argument)//
 
@@ -95,8 +95,8 @@ console.assert(multiMax(3,1,2,3) != 9, "3 * 3 = 9 (First arg, by largest.")
 function performAction(ninja, action) {
     action = typeof action === "undefined" ? "skulking" : action;
     return ninja + " " + action;
-};//ES5
+}; //ES5
 
 function performAction2(ninja, action = "skulking") {
     return ninja + " " + action;
-}//ES6
+} //ES6
