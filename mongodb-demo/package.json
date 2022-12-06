@@ -2,7 +2,7 @@
     "name": "user-auth-example",
     "version": "0.0.1",
     "dependencies": {
-        "express": "2.5.8",
+        "express": "4.18.2",
         "jade": "0.20.3",
         "mongodb": "^2.2.33",
         "mongodb-wrapper": "^1.0.3"
